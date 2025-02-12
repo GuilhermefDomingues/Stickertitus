@@ -11,7 +11,7 @@ export default function Index() {
         <ImageViewer imgSource={placeholderImage} />
       </View>
       <View style={styles.footerContainer}>
-        <Button label="chose a photo"/>
+        <Button label="chose a photo" theme="primary" />
         <Button label="use this photo"/>
       </View>
     </View>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 1,
-    paddingTop: 8,
+    paddingTop: 28,
   },
   footerContainer:{
     flex: 1/3,
