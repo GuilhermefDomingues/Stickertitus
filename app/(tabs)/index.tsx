@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { View, StyleSheet } from "react-native";
 import * as ImagePicker from "expo-image-picker";
+import { ImageSource } from "expo-image";
 
 import Button from "@/components/Button";
 import CircleButton from "@/components/CircleButton";
+import EmojiList from "@/components/EmojiList";
 import EmojiPicker from "@/components/EmojiPicker";
 import IconButton from "@/components/IconButton";
 import ImageViewer from "@/components/ImageViewer";
@@ -16,6 +18,7 @@ export default function Index() {
   );
   const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
+  const [pickedEmoji, sePickedEmoji] = useState<ImageSource | undefined>(undefined)
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -83,7 +86,9 @@ export default function Index() {
       <EmojiPicker
         isVisible={isModalVisible}
         onClose={onModalClose}
-      ></EmojiPicker>
+      >
+        <EmojiList onSelect={sePickedEmoji} onCloseModal={onModalClose} />
+      </EmojiPicker>
     </View>
   );
 }
